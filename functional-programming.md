@@ -34,7 +34,6 @@ var square = e => {
 Function.prototype.pipe = function(fn) {
     return function(arg) {
         return fn.call(null, this(arg));
-        // 等同return fn(this(arg));
     }.bind(this);
 }
 
@@ -50,7 +49,6 @@ var result = [1, 2, 3, 4, 5].map(addOne.pipe(square)) //-> [4,9,16,25,36]
 function reduce(fn) {
     return function(...args) {
         return args.reduce(fn.bind(this));
-        // == return args.reduce(fn);
     }
 }
 
